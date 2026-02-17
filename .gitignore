@@ -1,0 +1,7 @@
+secrets.txt
+.env
+.venv/
+node_modules/
+dist/
+*.log
+.history/
