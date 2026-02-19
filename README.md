@@ -9,15 +9,15 @@ This project **implements the Transformer architecture purely in PyTorch**, incl
 The model is deployed as a full-stack application with a **FastAPI** backend for inference and a **Streamlit** frontend for user interaction.
 
 ## Key Features
-Custom Transformer Architecture: Built MultiHeadAttention, LayerNorm, and FeedForward blocks from scratch.
+**Custom Transformer Architecture:** Built MultiHeadAttention, LayerNorm, and FeedForward blocks from scratch.
 
-10 Million Parameters: Scaled up from a toy model to a standard small-scale LLM (n_embd=384, n_head=6, n_layer=6).
+**10 Million Parameters:** Scaled up from a toy model to a standard small-scale LLM (n_embd=384, n_head=6, n_layer=6).
 
-Inference API: Decoupled architecture serving the model via a REST API using FastAPI.
+**Inference API:** Decoupled architecture serving the model via a REST API using FastAPI.
 
-Interactive UI: User-friendly web interface built with Streamlit.
+**Interactive UI:** User-friendly web interface built with Streamlit.
 
-GPU Accelerated: Optimized for CUDA-enabled training and inference.
+**GPU Accelerated:** Optimized for CUDA-enabled training and inference.
 
 ## Key Concepts Learnt
 
@@ -31,7 +31,8 @@ This project involved building a Decoder-Only Transformer architecture from the 
 **Position-wise Feed-Forward Networks (The "Computation" Phase):**
 - Developed the MLP blocks that follow attention layers, consisting of two linear transformations with a ReLU activation in between.
 - Implemented the standard expansion factor of 4x, creating a high-dimensional space for the model to process and "reason" about the information gathered during attention.
-- Residual Connections & Layer Normalization:
+
+**Residual Connections & Layer Normalization:**
 - Integrated Skip Connections around both attention and feed-forward blocks to prevent vanishing gradients, allowing for the training of deeper networks.
 - Applied Layer Normalization before each block to stabilize training dynamics by normalizing input distributions and mitigating internal covariate shift.
 
@@ -43,53 +44,63 @@ This project involved building a Decoder-Only Transformer architecture from the 
 
 
 ## Tech Stack
-Deep Learning: PyTorch (CUDA 12.x)
+**Deep Learning:** PyTorch (CUDA 12.x)
 
-Backend: FastAPI, Uvicorn
+**Backend:** FastAPI, Uvicorn
 
-Frontend: Streamlit
+**Frontend:** Streamlit
 
-Data Processing: Python (Native)
+**Data Processing:** Python (Native)
 
-Version Control: Git
+**Version Control:** Git
 
 ## Model Architecture
 The model follows a standard GPT-style decoder-only architecture:
-- Embedding Dimension (n_embd): 384
-- Number of Heads (n_head): 6
-- Number of Layers (n_layer): 6
-- Block Size (Context Window): 8 tokens
-- Dropout: 0.2
-- Parameter Count: ~10.7 Million
+- **Embedding Dimension (n_embd):** 384
+- **Number of Heads (n_head):** 6
+- **Number of Layers (n_layer):** 6
+- **Block Size (Context Window):** 8 tokens
+- **Dropout:** 0.2
+- **Parameter Count:** ~10.7 Million
 
 ## Installation & Setup
 **1. Clone Repository**
 
+```
 git clone https://github.com/qusydani/LLMFromScratch.git
-
 cd financial-gpt
+```
 
 **2. Create Virtual Environment**
 
+```
 python -m venv .venv
-
 .venv\Scripts\activate
+```
 
 **4. Install Dependencies**
 
+```
 pip install -r requirements.txt
+```
 
 ## Usage
 **1. Train the Model from scratch (with input.txt)**
 
+```
 python v2.py
+```
 
 This will generate financial_gpt_weights.pth after training.
 
 **2. Start the FastAPI backend**
 
+```
 uvicorn app:app --reload
+```
 
 **3. Launch the Streamlit interface**
 
+```
 streamlit run frontend.py
+```
